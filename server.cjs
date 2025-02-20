@@ -68,9 +68,9 @@ app.post('/temas', (req, res) => {
 });
 
 app.post('/opiniones', (req, res) => {
-    const { nombre, opinion } = req.body;
+    const { nombre, opinion,email } = req.body;
 
-    conexion.query('INSERT INTO opiniones(nombre,opinion) VALUES(?,?)', [nombre, opinion], (err) => {
+    conexion.query('INSERT INTO opiniones (nombre,opinion, email) VALUES(?,?,?)', [nombre, opinion, email], (err) => {
         if (err) {
             res.status(500).json({ error: err.message });
         } else {
